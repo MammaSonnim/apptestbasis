@@ -8,4 +8,18 @@ BODY
   background: white;
   color: black;
   font-size: small;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header
+{
+  font-size: 2em;
+  padding: 2em;
+  background-color: #00838F;
+}
+
+.title
+{
+  color: #fff;
+  font-weight: 400;
 }
