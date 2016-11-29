@@ -1,9 +1,8 @@
 var Value = require('basis.data').Value;
 var Node = require('basis.ui').Node;
 var tabs = require('basis.ui.tabs');
-var Entity = require('basis.entity');
-var Service = require('basis.net.service').Service;
-
+var Entity = basis.require('basis.entity');
+var Service = basis.require('basis.net.service').Service;
 
 module.exports = require('basis.app').create({
   title: 'Продвинутый курс по JS',
@@ -23,7 +22,6 @@ var LessonItem = Entity.createType('LessonItem', {
   name: String
 });
 
-// define data type
 var Lesson = Entity.createType('Lesson', {
   id: Entity.IntId,
   title: String,
@@ -31,6 +29,7 @@ var Lesson = Entity.createType('Lesson', {
   practice: Entity.createSetType(LessonItem)
 });
 
+// load data
 Lesson.all.setSyncAction(service.createAction({
   url: '/src/app/data/lessons.json',
   method: 'GET',
@@ -39,6 +38,11 @@ Lesson.all.setSyncAction(service.createAction({
   }
 }));
 
+// AccordionControl
+new tabs.AccordionControl({
+  container: document.body,
+  dataSource: Lesson.all
+});
 
 // Nodes for list
 var LessonItemNode = Node.subclass({

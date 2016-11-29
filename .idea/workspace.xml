@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f8e4ff4-fc6d-4df5-90bd-86941c375f58" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/data/lessons.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/template/calendar-node-item.tmpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/template/lesson-item.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/template/lesson-item.tmpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/template/lesson-list.tmpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/template/layout.css" afterPath="$PROJECT_DIR$/src/app/template/layout.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/template/layout.tmpl" afterPath="$PROJECT_DIR$/src/app/template/layout.tmpl" />
     </list>
     <ignored path="apptestbasis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +28,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="483">
+              <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -559,12 +550,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1480322451384</updated>
-      <workItem from="1480322453101" duration="25386000" />
+      <workItem from="1480322453101" duration="25557000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25386000" />
+    <option name="totallyTimeSpent" value="25557000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -799,8 +790,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="483">
+          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
           <folding />
         </state>
       </provider>
