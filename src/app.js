@@ -17,16 +17,20 @@ module.exports = require('basis.app').create({
 // create service to load data
 var service = new Service();
 
-// define data type
-var LessonItem = Entity.createType('LessonItem', {
+// define data types
+var ContentItem = Entity.createType('ContentItem', {
   name: String
 });
 
+var LessonContent = Entity.createType('LessonContent', {
+  theory: Entity.createSetType(ContentItem),
+  practice: Entity.createSetType(ContentItem)
+});
+
 var Lesson = Entity.createType('Lesson', {
-  id: Entity.IntId,
   title: String,
-  theory: Entity.createSetType(LessonItem),
-  practice: Entity.createSetType(LessonItem)
+  content: Entity.createSetType(LessonContent),
+  dateTime: Date
 });
 
 // load data
@@ -38,14 +42,45 @@ Lesson.all.setSyncAction(service.createAction({
   }
 }));
 
-// AccordionControl
 new tabs.AccordionControl({
   container: document.body,
-  dataSource: Lesson.all
+  dataSource: Lesson.all,
+  childClass: {
+    dataSource: 'data.content',
+    binding: {
+      title: 'data:'
+    },
+    childClass: {
+      autoDelegate: true,
+      template: resource('./app/template/lesson-tab-content.tmpl'),
+      binding: {
+        theory: 'satellite:',
+        practice: 'satellite:'
+      },
+      satellite: {
+        theory: {
+          // instance: ?,
+          config: function(owner) {
+            return {
+              dataSource: Value.from(owner, 'data.theory')
+            }
+          }
+        },
+        practice: {
+          // instance: ?,
+          config: function(owner) {
+            return {
+              dataSource: Value.from(owner, 'data.practice')
+            }
+          }
+        }
+      }
+    }
+  }
 });
 
 // Nodes for list
-var LessonItemNode = Node.subclass({
+var lessonContentPart = Node.subclass({
   childClass: {
     template: resource('./app/template/lesson-item.tmpl'),
     binding: {
@@ -54,29 +89,47 @@ var LessonItemNode = Node.subclass({
   }
 });
 
+var lessonContent = Node.subclass({
+  childClass: lessonContentPart
+});
+
 var lessonNode = Node.subclass({
   container: document.body,
   template: resource('./app/template/lesson.tmpl'),
   binding: {
     id: 'data:',
     title: 'data:',
-    theory: 'satellite:',
-    practice: 'satellite:'
+    content: 'satellite:'
   },
   satellite: {
-    theory: {
-      instance: LessonItemNode,
+    content: {
+      instance: lessonContent,
       config: function(owner) {
+        console.dir(owner)
         return {
-          dataSource: Value.from(owner, 'data.theory')
+          dataSource: Value.from(owner, 'data.content')
         }
-      }
-    },
-    practice: {
-      instance: LessonItemNode,
-      config: function(owner) {
-        return {
-          dataSource: Value.from(owner, 'data.practice')
+      },
+      binding: {
+        theory: 'satellite:',
+        practice: 'satellite:'
+      },
+      satellite: {
+        theory: {
+          instance: lessonContentPart,
+          config: function(owner) {
+            return {
+              dataSource: Value.from(owner, 'data')
+            }
+          }
+        },
+        practice: {
+          instance: lessonContentPart,
+          config: function(owner) {
+            return {
+              dataSource: Value.from(owner, 'data')
+            }
+          }
         }
       }
     }
