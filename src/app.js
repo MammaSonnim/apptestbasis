@@ -33,7 +33,7 @@ new tabs.AccordionControl({
             content: 'data:'
         },
         childClass: {
-            template: '<div b:show="{visible}">{content}</div>'
+            template: ('./app/template/foobar.tmpl')
         }
     }
 });
