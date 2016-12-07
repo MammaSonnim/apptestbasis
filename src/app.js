@@ -24,31 +24,17 @@ Foobar.all.setSyncAction(service.createAction({
 
 Foobar.all.syncAction();
 
-Value.state(Foobar.all).link(null, function(state) {
-    if (state == STATE.READY) {
-        new tabs.TabSheetControl({
-            container: document.body,
-            dataSource: Foobar.all,
-            active: true,
-            childClass: { // Every Tab
-                binding: {
-                    title: 'data:',
-                    content: 'satellite:'
-                },
-                satellite: {
-                    content: {
-                        instance: Node,
-                        config: {
-                            autoDelegate: true,
-                            template: '<div b:show="{visible}">{content}</div>',
-                            binding: {
-                                content: 'data:',
-                                visible: Value.query('owner.selected')
-                            }
-                        }
-                    }
-                }
-            }
-        });
+new tabs.AccordionControl({
+    container: document.body,
+    dataSource: Foobar.all,
+    childClass: { // Every Tab
+        binding: {
+            title: 'data:',
+            content: 'data:'
+        },
+        childClass: {
+            template: '<div b:show="{visible}">{content}</div>'
+        }
     }
 });
+
